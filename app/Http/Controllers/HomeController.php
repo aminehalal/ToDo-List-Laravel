@@ -12,7 +12,9 @@ class HomeController extends Controller
         
         if (auth()->check()){
             $userId = auth()->user()->id;
-            $tasks = Task::where('userId', $userId)->get();
+            $tasks = Task::where('userId', $userId)
+            ->orderBy('endIn', 'asc')
+            ->get();
         }
         else{
             $tasks = null ;
@@ -43,6 +45,18 @@ class HomeController extends Controller
         $taskField['endIn'] = $endIn;
         $taskField['startIn'] = $startIn;
         Task::create($taskField);
+        return back();
+    }
+
+    function changeState($task){
+        $task = Task::find($task);
+        if ($task->state == 'done'){
+            $task->state = 'not done';
+        }
+        else{
+            $task->state = 'done';
+        }
+        $task->save();
         return back();
     }
 }

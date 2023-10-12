@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('task');
             $table->dateTime('startIn');
             $table->dateTime('endIn');
+            $table->string('state')->default('not done');
             $table->timestamps();
 
             //The Forirng Keys

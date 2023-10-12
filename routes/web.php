@@ -13,3 +13,4 @@ Route::post('/loginnow' , [AccountController::class , 'login']);
 Route::post('/logout' , [AccountController::class , 'logout']);
 
 Route::post('/createTask' , [HomeController::class , 'createTask']) ->middleware('auth');
+Route::get('/changeState/{task}' , [HomeController::class , 'changeState']);

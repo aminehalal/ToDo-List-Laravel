@@ -736,3 +736,6 @@ video {
     flex-direction: row;
   }
 }
+.line-through{
+  text-decoration: line-through;
+}
